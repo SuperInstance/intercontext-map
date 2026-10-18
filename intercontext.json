@@ -1,0 +1,2641 @@
+{
+  "graph": "intercontext",
+  "cartographer": "Kira",
+  "measured_at": "2026-10-18",
+  "doctrine": "the substrate is a graph of cells",
+  "corpus": {
+    "repos_cloned_and_measured": [
+      {
+        "repo": "SuperInstance/quilt",
+        "head": "33b5d810d4a0bdc0840b99bbf2c341376b3937b2",
+        "date": "2026-10-15"
+      },
+      {
+        "repo": "SuperInstance/quilt-claw",
+        "head": "165a49ab68b75875558cd62f77f9e0336cd37821",
+        "date": "2026-10-17"
+      },
+      {
+        "repo": "SuperInstance/cargo-line-tycoon",
+        "head": "595f6f320182fbb91e75fc4784fe6465fca99363",
+        "date": "2026-10-03"
+      },
+      {
+        "repo": "SuperInstance/qthe",
+        "head": "adc378dc8b89bb633539778cc91e5b06ca6df558",
+        "date": "2026-10-18"
+      },
+      {
+        "repo": "SuperInstance/quilt-subleq",
+        "head": "21efdd3dbce8ae493e905be3124748ee8230a24e",
+        "date": "2026-09-24"
+      },
+      {
+        "repo": "SuperInstance/quilt-rust",
+        "head": "ef3c3799047ca19d7046eeecd8c4754f69a697eb",
+        "date": "2026-09-29"
+      },
+      {
+        "repo": "SuperInstance/quilt-claw-cells-game",
+        "head": "5ef7416cd2144361e403353f874d5785f93920fe",
+        "date": "2026-09-19"
+      },
+      {
+        "repo": "SuperInstance/AI-Writings",
+        "head": "1da6180bb77aae35e8829f9e66de8e6f679453b1",
+        "date": "2026-10-17"
+      },
+      {
+        "repo": "SuperInstance/quilt-cells",
+        "head": "(2 files, no code)",
+        "date": "2026-10-10"
+      }
+    ],
+    "note_on_names": "The brief calls this repo `AI-Writings`. The GitHub org `AI-Writings` is 404; the repo is SuperInstance/AI-Writings."
+  },
+  "counts": {
+    "nodes": 48,
+    "edges": 70
+  },
+  "node_kinds": {
+    "cell_model": 8,
+    "witness_dialect": 5,
+    "chain": 3,
+    "media": 5,
+    "charter_claim": 11,
+    "organization": 8,
+    "npm_scope": 4,
+    "npm_packages": 1,
+    "device_feature": 3
+  },
+  "edge_classes": {
+    "cross-model": 4,
+    "model-claim": 3,
+    "witness": 6,
+    "chain": 5,
+    "ladder-witness": 5,
+    "media-model": 8,
+    "media-device": 1,
+    "device-feature": 2,
+    "device-device": 1,
+    "claim-media": 9,
+    "claim-model": 7,
+    "claim-witness": 4,
+    "org-boundary": 9,
+    "npm-boundary": 6
+  },
+  "boundary_crossing_edges": 15,
+  "unverified": [
+    "cl.laws"
+  ],
+  "nodes": [
+    {
+      "id": "m.spreadsheet",
+      "kind": "cell_model",
+      "label": "the spreadsheet cell\n@quilt/core 0.3.0\nstring id e.g. \"compass.heading\"\n8 kinds, yaml+zod",
+      "repo": "SuperInstance/quilt",
+      "id_axis": "no",
+      "address_axis": "yes",
+      "evidence": [
+        {
+          "path": "packages/core/src/types.ts",
+          "line": 43,
+          "note": "addressed by its `id` (e.g. compass.heading)"
+        },
+        {
+          "path": "packages/core/src/types.ts",
+          "line": 47,
+          "note": "EIGHT CELL KINDS, NOT ONE"
+        },
+        {
+          "path": "packages/core/package.json",
+          "line": 2,
+          "note": "name @quilt/core, version 0.3.0"
+        },
+        {
+          "path": "packages/core/src/cells/",
+          "note": "8 kind modules + value.ts base"
+        }
+      ],
+      "verified": true,
+      "cluster": "models"
+    },
+    {
+      "id": "m.agent",
+      "kind": "cell_model",
+      "label": "the agent cell\nquilt-claw\nNO address, NO hash-id\noutputs carry witness_hash",
+      "repo": "SuperInstance/quilt-claw",
+      "id_axis": "no",
+      "address_axis": "no",
+      "evidence": [
+        {
+          "path": "src/types.ts",
+          "line": 21,
+          "note": "witness_hash on ResearchOutput"
+        },
+        {
+          "path": "src/types.ts",
+          "line": 29
+        },
+        {
+          "path": "src/types.ts",
+          "line": 39
+        },
+        {
+          "path": "src/cells/distiller.ts",
+          "line": 113,
+          "note": "research: research.witness_hash"
+        },
+        {
+          "path": "src/store.ts",
+          "line": 19,
+          "note": "KnowledgeStore - a store, contrary to the charter"
+        }
+      ],
+      "verified": true,
+      "cluster": "models"
+    },
+    {
+      "id": "m.openjev",
+      "kind": "cell_model",
+      "label": "the openjev ancestor cell\nRANDOM identity: cell-{uuid4[:8]}\nA1 address via parse_address",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": "no",
+      "address_axis": "yes",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 34,
+          "note": "self.id = id or fcell-{uuid.uuid4().hex[:8]}"
+        },
+        {
+          "path": "cellular-first-design/code/spreadsheet/spreadsheet_plugin.py",
+          "line": 23,
+          "note": "parse_address regex ^([A-Z]+)(\\d+)$"
+        },
+        {
+          "path": "cellular-first-design/code/spreadsheet/spreadsheet_plugin.py",
+          "line": 4,
+          "note": "addressable as A1, B2, Sheet1!C3"
+        }
+      ],
+      "verified": true,
+      "note": "ID is random and ADDRESS lives in a DIFFERENT file (spreadsheet_plugin.py, not cell.py)",
+      "cluster": "models"
+    },
+    {
+      "id": "m.game",
+      "kind": "cell_model",
+      "label": "the game's substrate\nFNV-1a-64 content hash\nin a method MISNAMED computeAddress()",
+      "repo": "SuperInstance/cargo-line-tycoon",
+      "id_axis": "yes",
+      "address_axis": "no",
+      "evidence": [
+        {
+          "path": "substrate/ts/src/index.js",
+          "line": 68,
+          "note": "computeAddress() {"
+        },
+        {
+          "path": "substrate/ts/src/index.js",
+          "line": 69,
+          "note": "JSON.stringify({s:state, t:type, b:behavior})"
+        },
+        {
+          "path": "substrate/ts/src/index.js",
+          "line": 74,
+          "note": "return fnv1a64(payload).toString(16)"
+        },
+        {
+          "path": "substrate/ts/src/index.js",
+          "line": 65,
+          "note": "this.address = this.computeAddress()"
+        }
+      ],
+      "verified": true,
+      "note": "the ONLY model with ID, and it calls its ID an address",
+      "cluster": "models"
+    },
+    {
+      "id": "m.qthe",
+      "kind": "cell_model",
+      "label": "qthe's lattice cell\n64-slot wormhole table\nADDRESS = (slot, x, y, resonance), NO hash",
+      "repo": "SuperInstance/qthe",
+      "id_axis": "no",
+      "address_axis": "yes",
+      "evidence": [
+        {
+          "path": "qthe-core/kernel/qthe.mjs",
+          "line": 102,
+          "note": "Exactly 64 slots. Slot s is empty or {x, y, resonance}"
+        },
+        {
+          "path": "qthe-core/kernel/qthe.mjs",
+          "line": 123,
+          "note": "write(slot, x, y, resonance)"
+        },
+        {
+          "path": "qthe-core/kernel/qthe.mjs",
+          "line": 121
+        },
+        {
+          "path": "cloudflare/src/worker.js",
+          "line": 198,
+          "note": "t.write(s.slot, s.x, s.y, s.resonance)"
+        }
+      ],
+      "verified": true,
+      "cluster": "models"
+    },
+    {
+      "id": "m.receipt",
+      "kind": "cell_model",
+      "label": "the receipt cell\nINPUT -> OUTPUT + WHY + COST\ninput_hash/product_hash/activation/budget",
+      "repo": "SuperInstance/AI-Writings (labs)",
+      "id_axis": "partial",
+      "address_axis": "no",
+      "evidence": [
+        {
+          "path": "labs/quilt-kernel/quilt_kernel.py",
+          "line": 257,
+          "note": "body = {cell, input_hash, product_hash, budget}"
+        },
+        {
+          "path": "labs/quilt-kernel/quilt_kernel.py",
+          "line": 259,
+          "note": "body[activation] = activation(name, input_hash, product_hash)"
+        },
+        {
+          "path": "labs/quilt-kernel/quilt_kernel.py",
+          "line": 221,
+          "note": "receipt_ok: content_hash(b['input']) != b['input_hash'] -> reject"
+        }
+      ],
+      "verified": true,
+      "note": "identity IS a hash of content (activation hash), but there is no place",
+      "cluster": "models"
+    },
+    {
+      "id": "m.quilt_cells",
+      "kind": "cell_model",
+      "label": "the cell-contract sketch\nINPUT -> [CELL] -> OUTPUT + WHY + COST\nDOCS ONLY, no code",
+      "repo": "SuperInstance/quilt-cells",
+      "id_axis": "no",
+      "address_axis": "no",
+      "evidence": [
+        {
+          "path": "QUILT.md",
+          "line": 48,
+          "note": "INPUT -> [CELL] -> OUTPUT + WHY + COST"
+        },
+        {
+          "path": "QUILT.md",
+          "line": 153,
+          "note": "Every cell prints its cost"
+        },
+        {
+          "path": "QUILT.md",
+          "line": 145,
+          "note": "if a cell cannot fit on the vessel... it gets a PHONE CALL - the call-out is specified in PROSE"
+        }
+      ],
+      "verified": true,
+      "note": "the only repo in this map with ZERO source files (QUILT.md 11436 B + README.md 1802 B)",
+      "cluster": "models"
+    },
+    {
+      "id": "m.corpus",
+      "kind": "cell_model",
+      "label": "the demo corpus that changes under itself\n109+ demos under cellular-first-design/",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": "no",
+      "address_axis": "partial",
+      "evidence": [
+        {
+          "path": "cellular-first-design/",
+          "note": "109 entries incl. code/openjev, code/spreadsheet, reports/"
+        },
+        {
+          "path": "cellular-first-design/demos.md"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/test_openjev.py",
+          "line": 48,
+          "note": "assert entry[opcode] == BIND"
+        }
+      ],
+      "verified": true,
+      "note": "a corpus, not one model; contains openjev + spreadsheet as sub-models",
+      "cluster": "models"
+    },
+    {
+      "id": "w.charter",
+      "kind": "witness_dialect",
+      "label": "the charter's witness\n{tick, op, cell, params, hash, prev_hash, sig}\nCHAINED. result? ADDED 2026-10-18",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 72,
+          "note": "type Witness = { tick, op, cell, params, hash, prev_hash, sig }"
+        },
+        {
+          "path": "algebra.md",
+          "line": 88,
+          "commit": "1da6180bb77aae35e8829f9e66de8e6f679453b1",
+          "note": "result?: any  -- ADDED in 1da6180, +13 lines"
+        }
+      ],
+      "verified": true,
+      "note": "has prev_hash (CHAINED); result is OPTIONAL and was added 2h before this map",
+      "cluster": "witness"
+    },
+    {
+      "id": "w.canon",
+      "kind": "witness_dialect",
+      "label": "the live canon's witness\n{id, opcode, cell_id, timestamp, payload_summary}\nNO CHAIN. result on TICK only",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "_worker.js",
+          "line": 181,
+          "note": "const witness = { ... } (cell CREATE, NO result)"
+        },
+        {
+          "path": "_worker.js",
+          "line": 183,
+          "note": "opcode: 'CREATE'"
+        },
+        {
+          "path": "_worker.js",
+          "line": 192,
+          "note": "WITNESS_LOG.push(witness) - in-memory"
+        },
+        {
+          "path": "_worker.js",
+          "line": 437,
+          "note": "const w = { id:, opcode:'EFFECT', cell_id:tick:.., timestamp:, payload_summary:{} }"
+        },
+        {
+          "path": "_worker.js",
+          "line": 447,
+          "note": "result: ... ADDED for tick witnesses only"
+        }
+      ],
+      "verified": true,
+      "note": "grep -c prev_hash _worker.js = 0. CHAINLESS. The 181 witness has no result; the 437 one does.",
+      "cluster": "witness"
+    },
+    {
+      "id": "w.recorder",
+      "kind": "witness_dialect",
+      "label": "the labs' witness\nDRAFT{prompt, response, params}\nCHAINED. CARRIES THE RESULT",
+      "repo": "SuperInstance/AI-Writings (labs)",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 102,
+          "note": "def draft(self, actor, prompt, response, params=None, refs=None)"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 104,
+          "note": "{prompt: prompt, response: response, params: params or {}}"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 90,
+          "note": "rec[hash] = fnv1a64(canon({prev: prev, ...envelope}))"
+        }
+      ],
+      "verified": true,
+      "note": "chained AND carries the answer - the only dialect with both",
+      "cluster": "witness"
+    },
+    {
+      "id": "w.openjev",
+      "kind": "witness_dialect",
+      "label": "openjev's witness (a FOURTH dialect, found by this map)\n{ts, opcode:'WITNESS', value, source, jev_confidence}\nNO hash, NO chain",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 46,
+          "note": "def witness(self, value, source='self')"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 48,
+          "note": "ts: ...isoformat()"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 50,
+          "note": "opcode: WITNESS"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 51,
+          "note": "value: value"
+        }
+      ],
+      "verified": true,
+      "note": "NOT in the brief's list of three. It also emits opcode 'PROOF' (cell.py:67) - not a charter opcode.",
+      "cluster": "witness"
+    },
+    {
+      "id": "w.reltypes",
+      "kind": "witness_dialect",
+      "label": "the recorder's NINE relations - a FOURTH opcode vocabulary\nTASK ROUTE DRAFT DRAW FOLD KEEP DROP MARK OUTCOME",
+      "repo": "SuperInstance/AI-Writings (labs)",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 38,
+          "note": "REL_TYPES = {TASK,ROUTE,DRAFT,DRAW,FOLD,KEEP,DROP,MARK,OUTCOME}"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 21,
+          "note": "rel in TASK ROUTE DRAFT DRAW FOLD KEEP DROP MARK OUTCOME"
+        }
+      ],
+      "verified": true,
+      "note": "shares ZERO names with the charter's eleven",
+      "cluster": "witness"
+    },
+    {
+      "id": "c.fnv_recorder",
+      "kind": "chain",
+      "label": "fnv1a-64 chain (python)\nGENESIS via prev=None; verify() replays",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 41,
+          "note": "def fnv1a64(s)"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 42,
+          "note": "fnv1a-64 over utf-8 - the fleet WAL convention"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 176,
+          "note": "def verify(records)"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 183
+        }
+      ],
+      "verified": true,
+      "cluster": "chains"
+    },
+    {
+      "id": "c.ledgerjs",
+      "kind": "chain",
+      "label": "fnv1a-64 chain (js)\nGENESIS '0x0000000000000000'\nbyte-compatible with recorder.py BY DESIGN",
+      "repo": "SuperInstance/quilt-claw",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "witness/ledger.js",
+          "line": 42,
+          "note": "const GENESIS = '0x0000000000000000'"
+        },
+        {
+          "path": "witness/ledger.js",
+          "line": 57,
+          "note": "fnv1a64 - Same constants as recorder.py / collapse_ledger.py"
+        },
+        {
+          "path": "witness/ledger.js",
+          "line": 124,
+          "note": "chainHash(prev, rec)"
+        },
+        {
+          "path": "witness/ledger.js",
+          "line": 150,
+          "note": "const prev = ... : GENESIS"
+        },
+        {
+          "path": "witness/ledger.js",
+          "line": 6,
+          "note": "BYTE-COMPATIBLE with it on purpose"
+        }
+      ],
+      "verified": true,
+      "note": "ledger.js:448 lines / 14680 B - the largest witness implementation measured",
+      "cluster": "chains"
+    },
+    {
+      "id": "c.ledger_rs",
+      "kind": "chain",
+      "label": "double-entry chain (rust)\nsha256, input/output postings, prev_hash\nAND `expected` - the prediction it was scored against",
+      "repo": "SuperInstance/quilt-rust",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 402,
+          "note": "pub struct LedgerEntry"
+        },
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 410,
+          "note": "pub input: Posting  (debit)"
+        },
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 412,
+          "note": "pub output: Posting  (credit)"
+        },
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 421,
+          "note": "pub expected: Option<Value>  <- the prediction"
+        },
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 426,
+          "note": "pub imbalance: Option<f64>  <- value_distance(expected, output)"
+        },
+        {
+          "path": "packages/core/src/ledger.rs",
+          "line": 431,
+          "note": "pub hash: Hash  <- sha256(canonical_json(this minus hash))"
+        }
+      ],
+      "verified": true,
+      "note": "1312 lines / 50148 B. The ONLY chain that witnesses a prediction.",
+      "cluster": "chains"
+    },
+    {
+      "id": "med.ts",
+      "kind": "media",
+      "label": "TypeScript\nquilt-claw + @quilt/core\n6 of 11 opcodes dispatched",
+      "repo": "SuperInstance/quilt-claw, SuperInstance/quilt",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 80,
+          "note": "case 'BIND'"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 82,
+          "note": "case 'LINK'"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 85,
+          "note": "case 'EFFECT'"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 87,
+          "note": "case 'VIEW'"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 89,
+          "note": "case 'TICK'"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 93,
+          "note": "case 'ATTEST'"
+        }
+      ],
+      "verified": true,
+      "note": "the 6th TS opcode is ATTEST - an opcode the charter does not have",
+      "cluster": "media"
+    },
+    {
+      "id": "med.c99",
+      "kind": "media",
+      "label": "C99\nsubstrate/c/cell_algebra.c\n5 opcodes + 2 of the 5 laws machine-checked",
+      "repo": "SuperInstance/cargo-line-tycoon",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 5,
+          "note": "op_bind"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 10,
+          "note": "op_link"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 15,
+          "note": "op_effect"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 19,
+          "note": "op_view"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 23,
+          "note": "op_tick"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 26,
+          "note": "law_L1_bind_idempotence"
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 35,
+          "note": "law_L3_view_purity  <- LABELLED L3; charter numbers VIEW-pure as law 4"
+        }
+      ],
+      "verified": true,
+      "note": "43 lines total",
+      "cluster": "media"
+    },
+    {
+      "id": "med.py",
+      "kind": "media",
+      "label": "Python\nopenjev/cell.py: BIND(:91) FORGET(:111) TICK(:121)\nsubstrate_cell_algebra.py: 0 dispatched",
+      "repo": "SuperInstance/AI-Writings",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 78,
+          "note": "def bind(self, other_id, jev_confidence=None)"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 91,
+          "note": "opcode: BIND"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 111,
+          "note": "opcode: FORGET"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 121,
+          "note": "opcode: TICK"
+        },
+        {
+          "path": "cargo-line-tycoon/motifs/math/substrate_cell_algebra.py",
+          "line": 23,
+          "note": "def join(a,b) - lattice algebra, NO opcode dispatch"
+        }
+      ],
+      "verified": true,
+      "cluster": "media"
+    },
+    {
+      "id": "med.rust",
+      "kind": "media",
+      "label": "Rust\nquilt-polyformalism: Op enum, COUNT=9, WITH an Engine\nno_std-capable",
+      "repo": "SuperInstance/quilt-rust",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 72,
+          "note": "Op::Bind => \"BIND\" ... :80 Op::Crdt"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 86,
+          "note": "pub const COUNT: usize = 9;  // 5+1+1+1+1 = 9"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 195,
+          "note": "pub const ALL_OPS: [Op; 9]"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 212,
+          "note": "pub fn law_bind_idempotent(...)"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 37,
+          "note": "#![cfg_attr(not(test), no_std)]"
+        }
+      ],
+      "verified": true,
+      "note": "9 of 11. WORLD and TIME are absent - the enum stops at Crdt.",
+      "cluster": "media"
+    },
+    {
+      "id": "med.subleq",
+      "kind": "media",
+      "label": "SUBLEQ - 1 instruction\nquilt-subleq\nBIND/LINK/EFFECT=1 instr, VIEW=2, 5 STUBBED\nHAS A REMOTE PORT",
+      "repo": "SuperInstance/quilt-subleq",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "src/lib.rs",
+          "line": 26,
+          "note": "Then BIND/LINK/EFFECT are 1 instruction. VIEW is 2."
+        },
+        {
+          "path": "src/lib.rs",
+          "line": 27,
+          "note": "PROOF/ROUTE/CRDT/WORLD/TIME are STUBBED (substrate-level semantics are witness-only)"
+        },
+        {
+          "path": "src/block.rs",
+          "line": 24,
+          "note": "Port { url: String, sig: String, encoding: Encoding }"
+        },
+        {
+          "path": "src/block.rs",
+          "line": 22,
+          "note": "'url' is the network address; 'sig' is the cell id or signature"
+        },
+        {
+          "path": "src/block.rs",
+          "line": 117,
+          "note": "For now we model it as a local buffer (the remote fetch is MOCKED)"
+        },
+        {
+          "path": "src/block.rs",
+          "line": 118,
+          "note": "pub struct PortBlock"
+        },
+        {
+          "path": "src/lib.rs",
+          "line": 33,
+          "note": "1178 lines across src/*.rs"
+        }
+      ],
+      "verified": true,
+      "note": "the ONLY device with a cell that names a remote service - and the fetch is mocked",
+      "cluster": "media"
+    },
+    {
+      "id": "cl.opcodes",
+      "kind": "charter_claim",
+      "label": "11 opcodes",
+      "documented_value": "11 (5 + 6 adopted)",
+      "status": "DRIFTED - three different elevens",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 6,
+          "note": "BIND LINK EFFECT VIEW TICK"
+        },
+        {
+          "path": "algebra.md",
+          "line": 13,
+          "note": "FORGET PROOF ROUTE CRDT WORLD TIME"
+        },
+        {
+          "path": "cellular-first-design/reports/wr-obs13-missing-opcodes.md",
+          "line": 9,
+          "note": "ATTEST CONTEST(:11) REVOKE(:13) WITHDRAW(:15) MERGE(:17) DELEGATE(:17)",
+          "bytes": 3583
+        },
+        {
+          "path": "cargo-line-tycoon/tests/sim/massive_simulation.js",
+          "line": 16,
+          "note": "const OPCODES = ['ATTEST','CONTEST','MERGER','REVOKE','WITHDRAW','DELEGATE','BIND','LINK','EFFECT','VIEW','TICK']"
+        },
+        {
+          "path": "algebra.md",
+          "line": 1,
+          "commit": "3807557abd...",
+          "note": "committed 2026-09-21T14:46:45Z"
+        },
+        {
+          "path": "cellular-first-design/reports/wr-obs13-missing-opcodes.md",
+          "line": 1,
+          "commit": "46766b5605...",
+          "note": "committed 2026-09-21T22:01:18Z = 7h14m33s later"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.kinds",
+      "kind": "charter_claim",
+      "label": "26 kinds",
+      "documented_value": "26",
+      "status": "SHORT BY 1, SHORT BY 2",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 45,
+          "note": "kind: Kind; // 26 known kinds"
+        },
+        {
+          "path": "quilt-claw/src/cells-*/",
+          "note": "25 directories"
+        },
+        {
+          "path": "quilt-claw-cells-game/index.html",
+          "line": 5,
+          "note": "title says 26"
+        },
+        {
+          "path": "quilt-claw-cells-game/index.html",
+          "line": 156,
+          "note": "// 26 cell kinds ... const CELLS = ["
+        },
+        {
+          "path": "quilt-claw-cells-game/index.html",
+          "line": 158,
+          "note": "but the array holds 25 ids, incl. perm"
+        },
+        {
+          "path": "_worker.js",
+          "line": 21,
+          "note": "KIND_WHITELIST = 24 entries"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.address",
+      "kind": "charter_claim",
+      "label": "Address = (x, y, t, sig)",
+      "documented_value": "4D navigation without a map",
+      "status": "UNIMPLEMENTED - zero occurrences",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 129,
+          "note": "3. **Address = (x, y, t, sig)** - 4D navigation without a map"
+        },
+        {
+          "path": "(whole corpus)",
+          "note": "grep -rInE over .ts/.js/.py/.rs/.c/.mjs in 8 repos: ZERO hits"
+        },
+        {
+          "path": "quilt-subleq/src/block.rs",
+          "line": 24,
+          "note": "the only `sig` in a place-like field is a NETWORK PORT, not a cell address"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.lattice",
+      "kind": "charter_claim",
+      "label": "4D lattice, three projections\nTOP x,y / FRONT signal / SIDE time",
+      "documented_value": "same graph, three projections",
+      "status": "UNIMPLEMENTED - zero occurrences",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 64,
+          "note": "TOP (x, y) - spatial / FRONT (signal) / SIDE (time)"
+        },
+        {
+          "path": "algebra.md",
+          "line": 70,
+          "note": "The same graph, three projections."
+        },
+        {
+          "path": "(whole corpus)",
+          "note": "grep for FRONT/SIDE/TOP projection triples: ZERO hits"
+        },
+        {
+          "path": "quilt-claw/examples/04_full_lattice_demo.ts",
+          "line": 4,
+          "note": "demonstrates everything in the lattice - 73 lines, no projection code"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.id",
+      "kind": "charter_claim",
+      "label": "Cell ID = hash of (kind, payload, parents)",
+      "documented_value": "no separate ID service",
+      "status": "PARTIAL - one model hashes DIFFERENT fields",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 128,
+          "note": "1. **Cell ID = hash of (kind, payload, parents)**"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 69,
+          "note": "hashes {s, t, b} = state, type, behaviour - NOT parents"
+        },
+        {
+          "path": "SuperInstance/AI-Writings/labs/quilt-kernel/quilt_kernel.py",
+          "line": 259,
+          "note": "activation = hash(cell, input_hash, product_hash) - not (kind,payload,parents) either"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.poly",
+      "kind": "charter_claim",
+      "label": "Polyformalism = same model, 12 languages",
+      "documented_value": "12 languages",
+      "status": "3-5 MEDIA REAL; 11 NEVER COUNTED",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 143,
+          "note": "quilt-c C99 / quilt-subleq SUBLEQ / quilt-rs Rust no_std / quilt-py / quilt-ts"
+        },
+        {
+          "path": "algebra.md",
+          "line": 142,
+          "note": "Polyformalism = same model, 12 languages"
+        },
+        {
+          "path": "_worker.js",
+          "line": 16,
+          "note": "the live canon still asserts '12 languages'"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.nodb",
+      "kind": "charter_claim",
+      "label": "Don't store cells in a DB.\nUse the witness log + derived state",
+      "documented_value": "witness log + derived state",
+      "status": "VIOLATED IN THE SKETCHBOOK",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 133,
+          "note": "2. Don't store cells in a DB."
+        },
+        {
+          "path": "quilt-claw/src/store.ts",
+          "line": 19,
+          "note": "export class KnowledgeStore"
+        },
+        {
+          "path": "quilt-claw/src/store.ts",
+          "line": 20,
+          "note": "private entries = new Map<string, KnowledgeEntry>() - an index, in memory"
+        },
+        {
+          "path": "quilt-claw/src/store.ts",
+          "line": 21,
+          "note": "private topicIndex = new Map<...>"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.laws",
+      "kind": "charter_claim",
+      "label": "5 laws, proved in quilt-substrate-meta",
+      "documented_value": "5 laws, proved",
+      "status": "PARTIAL - 2 of 5 machine-checked, in the WRONG repo",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 26,
+          "note": "1. BIND idempotent ... 5. TICK monotonic"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/c/cell_algebra.c",
+          "line": 26,
+          "note": "law_L1_bind_idempotence"
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/c/cell_algebra.c",
+          "line": 35,
+          "note": "law_L3_view_purity"
+        },
+        {
+          "path": "quilt-rust/crates/quilt-polyformalism/src/lib.rs",
+          "line": 212,
+          "note": "law_bind_idempotent"
+        },
+        {
+          "path": "(quilt-substrate-meta)",
+          "note": "NOT CLONED and NOT MEASURED by this map"
+        },
+        {
+          "path": "SuperInstance/quilt-c",
+          "note": "NOT CLONED - named in algebra.md:143, never opened"
+        }
+      ],
+      "verified": false,
+      "note": "the 2 laws that ARE machine-checked are checked in cargo-line-tycoon and quilt-rust, not in the repo algebra.md names"
+    },
+    {
+      "id": "cl.witness",
+      "kind": "charter_claim",
+      "label": "Witness log IS the substrate of truth",
+      "documented_value": "append-only, chained",
+      "status": "CONTRADICTED BY THE LIVE CANON",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 60,
+          "note": "The witness log IS the substrate of truth for any cell."
+        },
+        {
+          "path": "_worker.js",
+          "line": 192,
+          "note": "WITNESS_LOG.push(witness) - an in-memory array, lost on restart"
+        },
+        {
+          "path": "_worker.js",
+          "line": 234,
+          "note": "let witnesses = WITNESS_LOG.slice()"
+        },
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 95,
+          "note": "A witness with no result is a witness to an INTENT"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.ladder",
+      "kind": "charter_claim",
+      "label": "the measurement ladder\nstep -> preds -> labels",
+      "documented_value": "strongest to weakest",
+      "status": "THE CITED SOURCE FILE DOES NOT EXIST",
+      "evidence": [
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 17,
+          "note": "1. a ladder - step -> preds -> labels, strongest to weakest"
+        },
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 100,
+          "note": "From `PRICED-TRAINING.md` 3.1 and 3.2"
+        },
+        {
+          "path": "situations/arch/PRICED-TRAINING.md",
+          "note": "ZERO COMMITS - the path has never existed in the repo"
+        },
+        {
+          "path": "labs/priced-training/priced_training.py",
+          "note": "the CODE exists; the cited .md does not"
+        },
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 28,
+          "note": "Only a witnessed answer can be compared, and only a compared answer can be a standard."
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "cl.result",
+      "kind": "charter_claim",
+      "label": "a witness must carry the answer",
+      "documented_value": "(new, 2026-10-18)",
+      "status": "SATISFIED IN 2 OF 4 DIALECTS",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 88,
+          "note": "result?: any"
+        },
+        {
+          "path": "_worker.js",
+          "line": 447,
+          "note": "result: ... - tick witnesses only"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 104,
+          "note": "response: response - inside DRAFT"
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 51,
+          "note": "value: value - present, but unchained"
+        }
+      ],
+      "verified": true
+    },
+    {
+      "id": "o.superinstance",
+      "kind": "organization",
+      "label": "SuperInstance\nSKETCHBOOK",
+      "description": "type=USER (not an Organization)\n5,289 public repos, created 2024-12-29",
+      "evidence": [
+        {
+          "path": "api.github.com/users/SuperInstance",
+          "note": "type: User, public_repos: 5289, created 2024-12-29"
+        },
+        {
+          "path": "api.github.com/orgs/SuperInstance",
+          "note": "404 Not Found - it is NOT an org"
+        }
+      ],
+      "verified": true,
+      "note": "the sketchbook is a personal account; nothing in it can be org-governed"
+    },
+    {
+      "id": "o.patchwork",
+      "kind": "organization",
+      "label": "patchwork-quilt\nPRODUCTION",
+      "description": "type=Organization, 6 repos, created 2026-10-03\nholds the git.pp family",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/patchwork-quilt",
+          "note": "repos: 6, created 2026-10-03"
+        },
+        {
+          "path": "org repo: git.pp-ng",
+          "note": "Python - next-gen Git substrate for concurrent agents"
+        },
+        {
+          "path": "org repo: gitpp-beam",
+          "note": "Elixir - passes the full conformance corpus (863 cases)"
+        },
+        {
+          "path": "org repo: git.pp-grid",
+          "note": "TypeScript - a shared month derived from a default + append-only record"
+        }
+      ],
+      "verified": true,
+      "note": "the one rung with real traffic behind it (pushed 2026-10-18)"
+    },
+    {
+      "id": "o.purple",
+      "kind": "organization",
+      "label": "purplepincher\nHARDENED",
+      "description": "type=Organization, 19 repos, created 2026-07-02\nlanding pages + Rust constraint math",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/purplepincher",
+          "note": "repos: 19, created 2026-07-02"
+        },
+        {
+          "path": "org repo: constraint-theory-core",
+          "note": "Rust - deterministic 2D vector snapping, zero runtime deps"
+        },
+        {
+          "path": "org repo: cocapn-com-phase1",
+          "note": "the cocapn work SURVIVED here after the cocapn name 404'd"
+        }
+      ],
+      "verified": true,
+      "note": "holds the abandoned @cocapn/* NAME as live repos"
+    },
+    {
+      "id": "o.siready",
+      "kind": "organization",
+      "label": "si-ready\nEMPTY SHELF",
+      "description": "type=Organization, 1 repo, created 2026-10-03\nonly .github: 'the curated shelf for ready-to-use applications'",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/si-ready",
+          "note": "repos: 1, created 2026-10-03"
+        },
+        {
+          "path": "org repo: .github",
+          "note": "SI Ready org profile: the curated shelf for ready-to-use applications"
+        }
+      ],
+      "verified": true,
+      "note": "literally empty: one org-profile README and nothing else"
+    },
+    {
+      "id": "o.luciddreamer",
+      "kind": "organization",
+      "label": "luciddreamer\nNAME HELD BY A USER",
+      "description": "GitHub User exists (0 repos, created 2023-04-26)\nthe Organization does NOT exist",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/luciddreamer",
+          "note": "404 Not Found"
+        },
+        {
+          "path": "api.github.com/users/luciddreamer",
+          "note": "type: User, public_repos: 0, created 2023-04-26"
+        },
+        {
+          "path": "npm registry: @luciddreamer/agent-grid",
+          "note": "HTTP 404 - the npm scope is FREE"
+        }
+      ],
+      "verified": true,
+      "note": "npm scope free, GitHub org name NOT available"
+    },
+    {
+      "id": "o.cocapn",
+      "kind": "organization",
+      "label": "cocapn\nGONE",
+      "description": "404 on both /orgs and /users - the account no longer exists at all",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/cocapn",
+          "note": "404 Not Found"
+        },
+        {
+          "path": "api.github.com/users/cocapn",
+          "note": "404 Not Found"
+        },
+        {
+          "path": "npm registry: @cocapn/plato-client",
+          "note": "HTTP 404 - the npm scope is FREE"
+        }
+      ],
+      "verified": true,
+      "note": "the name is free everywhere; the work graduated to purplepincher"
+    },
+    {
+      "id": "o.quiltdata",
+      "kind": "organization",
+      "label": "quiltdata\nOCCUPIES @quilt",
+      "description": "GitHub Organization, 87 repos, created 2016-02-07\nmaintains @quilt/quilt@0.4.2",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/quiltdata",
+          "note": "repos: 87, created 2016-02-07"
+        },
+        {
+          "path": "npm registry: @quilt/quilt",
+          "note": "HTTP 200, latest 0.4.2, maintainer: kevinklin"
+        },
+        {
+          "path": "npm registry: quilt-core",
+          "note": "HTTP 200, latest 0.11.0, maintainer: niko.dellic - a PANE-LAYOUT library"
+        }
+      ],
+      "verified": true,
+      "note": "two third parties, one name"
+    },
+    {
+      "id": "o.quiltorg",
+      "kind": "organization",
+      "label": "quilt\nUNRELATED",
+      "description": "GitHub Organization, 38 repos, created 2019-04-03 - no relationship to SuperInstance",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/quilt",
+          "note": "repos: 38, created 2019-04-03"
+        }
+      ],
+      "verified": true,
+      "note": "grants no npm scope"
+    },
+    {
+      "id": "s.superinstance",
+      "kind": "npm_scope",
+      "label": "@superinstance/*",
+      "state": "OURS - published",
+      "evidence": "[registry] @superinstance/quilt-tools HTTP 200, latest 0.1.1, maintainer: superinstance"
+    },
+    {
+      "id": "s.quilt",
+      "kind": "npm_scope",
+      "label": "@quilt/*",
+      "state": "OCCUPIED by a third party",
+      "evidence": "[registry] @quilt/quilt HTTP 200 v0.4.2 (kevinklin / quiltdata); @quilt/core, @quilt/sdk, @quilt/ai, @quilt/claw ALL HTTP 404"
+    },
+    {
+      "id": "s.luciddreamer",
+      "kind": "npm_scope",
+      "label": "@luciddreamer/*",
+      "state": "npm scope FREE, GitHub org name taken by a User",
+      "evidence": "[registry] @luciddreamer/agent-grid HTTP 404"
+    },
+    {
+      "id": "s.cocapn",
+      "kind": "npm_scope",
+      "label": "@cocapn/*",
+      "state": "npm scope FREE, GitHub name gone",
+      "evidence": "[registry] @cocapn/plato-client HTTP 404"
+    },
+    {
+      "id": "pkg.nine",
+      "kind": "npm_packages",
+      "label": "NINE @quilt/* packages\nwant a scope they cannot have\nall HTTP 404 on npm",
+      "repo": "SuperInstance/quilt",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "packages/ai/package.json",
+          "line": 2,
+          "note": "name @quilt/ai 0.1.0"
+        },
+        {
+          "path": "packages/evolve/package.json",
+          "line": 2,
+          "note": "name @quilt/evolve 0.1.0"
+        },
+        {
+          "path": "packages/claw/package.json",
+          "line": 2,
+          "note": "name @quilt/claw 0.1.0"
+        },
+        {
+          "path": "packages/elf/package.json",
+          "line": 2,
+          "note": "name @quilt/elf 0.1.0"
+        },
+        {
+          "path": "packages/nomad/package.json",
+          "line": 2,
+          "note": "name @quilt/nomad 0.1.0"
+        },
+        {
+          "path": "packages/rag/package.json",
+          "line": 2,
+          "note": "name @quilt/rag 0.1.0"
+        },
+        {
+          "path": "packages/k3s/package.json",
+          "line": 2,
+          "note": "name @quilt/k3s 0.1.0"
+        },
+        {
+          "path": "packages/fleet/package.json",
+          "line": 2,
+          "note": "name @quilt/fleet 0.1.0"
+        },
+        {
+          "path": "packages/pincher/package.json",
+          "line": 2,
+          "note": "name @quilt/pincher 0.1.0"
+        },
+        {
+          "path": "quilt/packages/",
+          "note": "the monorepo also has core, sdk, mcp, cli, tui"
+        }
+      ],
+      "verified": true,
+      "note": "declared, never published; @quilt/core and @quilt/sdk are 404 on npm too",
+      "cluster": "packages"
+    },
+    {
+      "id": "d.subleq_port",
+      "kind": "device_feature",
+      "label": "the cell that calls OUT\nBlockRef::Port{url, sig, encoding}\nTHE FETCH IS MOCKED",
+      "repo": "SuperInstance/quilt-subleq",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "src/block.rs",
+          "line": 24
+        },
+        {
+          "path": "src/block.rs",
+          "line": 117
+        },
+        {
+          "path": "src/block.rs",
+          "line": 118
+        },
+        {
+          "path": "examples/03_distribution_of_reality.rs",
+          "line": 96,
+          "note": "sig: branch_signal.into()"
+        },
+        {
+          "path": "examples/03_distribution_of_reality.rs",
+          "line": 109,
+          "note": "cross-node call demo"
+        }
+      ],
+      "verified": true,
+      "note": "the ONLY cell in the whole graph that names a remote service",
+      "cluster": "devices"
+    },
+    {
+      "id": "d.quilt_cells_call",
+      "kind": "device_feature",
+      "label": "the call-out, in PROSE\n'if a cell cannot fit on the vessel it gets a PHONE CALL'\nNO CODE",
+      "repo": "SuperInstance/quilt-cells",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "QUILT.md",
+          "line": 145
+        },
+        {
+          "path": "QUILT.md",
+          "line": 85,
+          "note": "Stereo teacher: 99MB, 17s - slow, expensive, but teaches"
+        }
+      ],
+      "verified": true,
+      "note": "specified in a docs-only repo; subleq is the only code that gestures at it",
+      "cluster": "devices"
+    },
+    {
+      "id": "d.rust_nostd",
+      "kind": "device_feature",
+      "label": "no_std Rust cell\nquilt-polyformalism: #![cfg_attr(not(test), no_std)]\n9 opcodes, an Engine, law checks",
+      "repo": "SuperInstance/quilt-rust",
+      "id_axis": null,
+      "address_axis": null,
+      "evidence": [
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 37
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 86,
+          "note": "COUNT = 9"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 683,
+          "note": "no filesystem in no_std - the stub just records"
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 687,
+          "note": "the C port's stub succeeds"
+        }
+      ],
+      "verified": true,
+      "note": "a no_std cell has NO way to call out: lib.rs:683 says no filesystem",
+      "cluster": "devices"
+    }
+  ],
+  "edges": [
+    {
+      "from": "m.spreadsheet",
+      "to": "m.agent",
+      "relation": "shares-no-identity",
+      "edge_class": "cross-model",
+      "evidence": [
+        {
+          "path": "quilt/packages/core/src/types.ts",
+          "line": 43,
+          "note": "string id"
+        },
+        {
+          "path": "quilt-claw/src/types.ts",
+          "line": 21,
+          "note": "witness_hash, no id, no address"
+        }
+      ],
+      "note": "both are called 'cell'; neither can be read by the other"
+    },
+    {
+      "from": "m.game",
+      "to": "m.spreadsheet",
+      "relation": "misnames-address-as-id",
+      "edge_class": "cross-model",
+      "evidence": [
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 68
+        },
+        {
+          "path": "quilt/packages/core/src/types.ts",
+          "line": 43
+        }
+      ],
+      "note": "the game's ADDRESS field holds a content hash; the spreadsheet's ADDRESS holds a chosen string. Same word, opposite facts."
+    },
+    {
+      "from": "m.openjev",
+      "to": "m.spreadsheet",
+      "relation": "inherits-address-style",
+      "edge_class": "cross-model",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/spreadsheet/spreadsheet_plugin.py",
+          "line": 23
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 34
+        }
+      ],
+      "note": "both are A1-style; but openjev's identity is a random uuid, so the address is not the identity"
+    },
+    {
+      "from": "m.qthe",
+      "to": "m.game",
+      "relation": "inherits-x-y-tuple",
+      "edge_class": "cross-model",
+      "evidence": [
+        {
+          "path": "qthe/qthe-core/kernel/qthe.mjs",
+          "line": 102
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 69
+        }
+      ],
+      "note": "qthe's slot carries (x,y,resonance); the game hashes (s,t,b). Two different ways to make a place."
+    },
+    {
+      "from": "m.receipt",
+      "to": "cl.id",
+      "relation": "implements-partially",
+      "edge_class": "model-claim",
+      "evidence": [
+        {
+          "path": "labs/quilt-kernel/quilt_kernel.py",
+          "line": 259
+        },
+        {
+          "path": "algebra.md",
+          "line": 128
+        }
+      ],
+      "note": "the receipt cell hashes content, but over (cell, input_hash, product_hash), not (kind, payload, parents)"
+    },
+    {
+      "from": "m.corpus",
+      "to": "m.openjev",
+      "relation": "contains",
+      "edge_class": "model-claim",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "from": "m.corpus",
+      "to": "m.spreadsheet",
+      "relation": "contains",
+      "edge_class": "model-claim",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/spreadsheet/spreadsheet_plugin.py",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "from": "w.charter",
+      "to": "w.recorder",
+      "relation": "is-unchained-relative-to",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 72,
+          "note": "prev_hash present"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 90,
+          "note": "prev present"
+        }
+      ],
+      "note": "both chained, but with different hash algorithms (unspecified in the charter vs fnv1a-64)"
+    },
+    {
+      "from": "w.charter",
+      "to": "w.canon",
+      "relation": "is-unchained",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 76,
+          "note": "prev_hash: string"
+        },
+        {
+          "path": "_worker.js",
+          "note": "grep -c prev_hash _worker.js = 0"
+        }
+      ],
+      "note": "the charter chains; the live canon does not"
+    },
+    {
+      "from": "w.canon",
+      "to": "w.charter",
+      "relation": "drifted-from",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "_worker.js",
+          "line": 181
+        },
+        {
+          "path": "algebra.md",
+          "line": 72
+        }
+      ],
+      "note": "different field NAMES: cell_id vs cell, opcode vs op, payload_summary vs params"
+    },
+    {
+      "from": "w.recorder",
+      "to": "w.charter",
+      "relation": "is-superset-of",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 104
+        },
+        {
+          "path": "algebra.md",
+          "line": 72
+        }
+      ],
+      "note": "the labs' DRAFT carries the response; the charter's Witness had no result until 2026-10-18"
+    },
+    {
+      "from": "w.openjev",
+      "to": "w.charter",
+      "relation": "is-unchained",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 46
+        },
+        {
+          "path": "algebra.md",
+          "line": 76
+        }
+      ],
+      "note": "openjev emits WITNESS/PROOF opcodes and has no hash field at all"
+    },
+    {
+      "from": "w.reltypes",
+      "to": "w.charter",
+      "relation": "inherits-nothing-from",
+      "edge_class": "witness",
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 38
+        },
+        {
+          "path": "algebra.md",
+          "line": 13
+        }
+      ],
+      "note": "9 relations, 0 names in common with the 11 opcodes"
+    },
+    {
+      "from": "c.fnv_recorder",
+      "to": "c.ledgerjs",
+      "relation": "is-byte-compatible-with",
+      "edge_class": "chain",
+      "evidence": [
+        {
+          "path": "quilt-claw/witness/ledger.js",
+          "line": 6
+        },
+        {
+          "path": "quilt-claw/witness/ledger.js",
+          "line": 57
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 42
+        }
+      ],
+      "note": "the ONE cross-language edge that is deliberately closed: same constants, same GENESIS, same verifier"
+    },
+    {
+      "from": "c.ledger_rs",
+      "to": "c.fnv_recorder",
+      "relation": "diverges-from",
+      "edge_class": "chain",
+      "evidence": [
+        {
+          "path": "quilt-rust/packages/core/src/ledger.rs",
+          "line": 431,
+          "note": "sha256"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 42,
+          "note": "fnv1a-64"
+        }
+      ],
+      "note": "same NAME (ledger), different algorithm, different posting model, different fields"
+    },
+    {
+      "from": "w.recorder",
+      "to": "c.fnv_recorder",
+      "relation": "is-chained-by",
+      "edge_class": "chain",
+      "evidence": [
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "from": "w.charter",
+      "to": "c.fnv_recorder",
+      "relation": "is-chained-by",
+      "edge_class": "chain",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 76,
+          "note": "prev_hash declared but ALGORITHM UNSPECIFIED"
+        }
+      ],
+      "note": "the charter says prev_hash; it never says how the hash is computed"
+    },
+    {
+      "from": "c.ledgerjs",
+      "to": "w.reltypes",
+      "relation": "hosts",
+      "edge_class": "chain",
+      "evidence": [
+        {
+          "path": "quilt-claw/witness/ledger.js",
+          "line": 448,
+          "note": "448 lines / 14680 B"
+        }
+      ]
+    },
+    {
+      "from": "cl.ladder",
+      "to": "w.recorder",
+      "relation": "is-checkable-only-if-witnessed-by",
+      "edge_class": "ladder-witness",
+      "evidence": [
+        {
+          "path": "situations/arch/PRICED-STRAINING.md",
+          "line": 28,
+          "note": "Only a witnessed answer can be compared"
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 104
+        }
+      ],
+      "note": "the `preds` rung is priceable because DRAFT carries response"
+    },
+    {
+      "from": "cl.ladder",
+      "to": "w.charter",
+      "relation": "was-not-checkable-until-2026-10-18",
+      "edge_class": "ladder-witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 88,
+          "note": "result?: any ADDED"
+        },
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 95
+        }
+      ],
+      "note": "before 1da6180 the charter's Witness had no result, so no rung was checkable"
+    },
+    {
+      "from": "cl.ladder",
+      "to": "w.canon",
+      "relation": "is-partially-checkable-by",
+      "edge_class": "ladder-witness",
+      "evidence": [
+        {
+          "path": "_worker.js",
+          "line": 447,
+          "note": "result on TICK witnesses only"
+        },
+        {
+          "path": "_worker.js",
+          "line": 181,
+          "note": "CREATE witnesses have no result"
+        }
+      ],
+      "note": "6 tick witnesses a tick carry answers; every CREATE witness does not"
+    },
+    {
+      "from": "cl.ladder",
+      "to": "c.ledger_rs",
+      "relation": "is-checkable-only-if-witnessed-by",
+      "edge_class": "ladder-witness",
+      "evidence": [
+        {
+          "path": "quilt-rust/packages/core/src/ledger.rs",
+          "line": 421,
+          "note": "pub expected: Option<Value>"
+        },
+        {
+          "path": "quilt-rust/packages/core/src/ledger.rs",
+          "line": 426,
+          "note": "pub imbalance: Option<f64>"
+        }
+      ],
+      "note": "the ONLY chain in the graph that witnesses a PREDICTION and its error - the `preds` rung, realised"
+    },
+    {
+      "from": "cl.ladder",
+      "to": "w.openjev",
+      "relation": "is-not-checkable-by",
+      "edge_class": "ladder-witness",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 51
+        },
+        {
+          "path": "situations/arch/PRICED-STANDARD.md",
+          "line": 95
+        }
+      ],
+      "note": "openjev carries the value but no hash, no chain, no tolerance"
+    },
+    {
+      "from": "med.subleq",
+      "to": "m.game",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "src/lib.rs",
+          "line": 26
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 80
+        }
+      ],
+      "note": "subleq implements the game's opcode set (BIND/LINK/EFFECT/VIEW/TICK) on a 1-instruction machine"
+    },
+    {
+      "from": "med.rust",
+      "to": "m.agent",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 72
+        },
+        {
+          "path": "quilt-claw/src/types.ts",
+          "line": 21
+        }
+      ],
+      "note": "quilt-rust's Op has no address and no witness_hash; it is closest to quilt-claw"
+    },
+    {
+      "from": "med.c99",
+      "to": "m.game",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 5
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "from": "med.ts",
+      "to": "m.spreadsheet",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "quilt/packages/core/src/types.ts",
+          "line": 43
+        },
+        {
+          "path": "quilt/packages/core/src/cells/",
+          "note": "8 kinds"
+        }
+      ],
+      "note": "the spreadsheet cell model has no opcode dispatch at all - it is a tagged union, not an algebra"
+    },
+    {
+      "from": "med.py",
+      "to": "m.openjev",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 91
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "from": "med.ts",
+      "to": "m.game",
+      "relation": "hosts",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "from": "med.subleq",
+      "to": "m.spreadsheet",
+      "relation": "cannot-host",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "src/lib.rs",
+          "line": 27,
+          "note": "6 of 11 STUBBED"
+        },
+        {
+          "path": "quilt/packages/core/src/types.ts",
+          "line": 47,
+          "note": "8 kinds"
+        }
+      ],
+      "note": "a 1-instruction machine has no room for 8 typed kinds"
+    },
+    {
+      "from": "med.rust",
+      "to": "m.spreadsheet",
+      "relation": "cannot-host",
+      "edge_class": "media-model",
+      "evidence": [
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 37,
+          "note": "no_std"
+        }
+      ],
+      "note": "no_std has no I/O, so an `api` cell cannot exist"
+    },
+    {
+      "from": "med.subleq",
+      "to": "d.subleq_port",
+      "relation": "has",
+      "edge_class": "media-device",
+      "evidence": [
+        {
+          "path": "src/block.rs",
+          "line": 24
+        },
+        {
+          "path": "src/block.rs",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "from": "d.subleq_port",
+      "to": "m.quilt_cells",
+      "relation": "implements-in-code",
+      "edge_class": "device-feature",
+      "evidence": [
+        {
+          "path": "quilt-subleq/src/block.rs",
+          "line": 24
+        },
+        {
+          "path": "quilt-cells/QUILT.md",
+          "line": 145
+        }
+      ],
+      "note": "the prose asks for a phone call; the only code that has one has it mocked"
+    },
+    {
+      "from": "m.quilt_cells",
+      "to": "d.quilt_cells_call",
+      "relation": "specifies",
+      "edge_class": "device-feature",
+      "evidence": [
+        {
+          "path": "QUILT.md",
+          "line": 145
+        }
+      ]
+    },
+    {
+      "from": "d.rust_nostd",
+      "to": "d.subleq_port",
+      "relation": "cannot-reach",
+      "edge_class": "device-device",
+      "evidence": [
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 683,
+          "note": "No filesystem in no_std"
+        }
+      ],
+      "note": "a no_std cell cannot fetch a URL; only the mocked Port gestures at it"
+    },
+    {
+      "from": "cl.opcodes",
+      "to": "med.ts",
+      "relation": "implemented-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 13
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 80
+        }
+      ],
+      "note": "6/11 dispatched"
+    },
+    {
+      "from": "cl.opcodes",
+      "to": "med.c99",
+      "relation": "implemented-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 13
+        },
+        {
+          "path": "substrate/c/cell_algebra.c",
+          "line": 5
+        }
+      ],
+      "note": "5/11"
+    },
+    {
+      "from": "cl.opcodes",
+      "to": "med.rust",
+      "relation": "implemented-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 13
+        },
+        {
+          "path": "crates/quilt-polyformalism/src/lib.rs",
+          "line": 86
+        }
+      ],
+      "note": "9/11 - WORLD and TIME missing"
+    },
+    {
+      "from": "cl.opcodes",
+      "to": "med.py",
+      "relation": "implemented-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 13
+        },
+        {
+          "path": "cellular-first-design/code/openjev/cell.py",
+          "line": 91
+        }
+      ],
+      "note": "3/11"
+    },
+    {
+      "from": "cl.opcodes",
+      "to": "med.subleq",
+      "relation": "implemented-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 13
+        },
+        {
+          "path": "src/lib.rs",
+          "line": 27
+        }
+      ],
+      "note": "4 real (1-instr), 5 STUBBED, 2 absent"
+    },
+    {
+      "from": "cl.kinds",
+      "to": "m.agent",
+      "relation": "implemented-by",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 45
+        },
+        {
+          "path": "quilt-claw/src/cells-*/",
+          "note": "25 dirs"
+        }
+      ],
+      "note": "25/26"
+    },
+    {
+      "from": "cl.kinds",
+      "to": "w.canon",
+      "relation": "validated-by",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 45
+        },
+        {
+          "path": "_worker.js",
+          "line": 21
+        }
+      ],
+      "note": "24/26 - the gap is exactly `perm`"
+    },
+    {
+      "from": "cl.address",
+      "to": "m.spreadsheet",
+      "relation": "is-adjacent-to",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 129
+        },
+        {
+          "path": "quilt/packages/core/src/types.ts",
+          "line": 43
+        }
+      ],
+      "note": "the spreadsheet ADDRESSes by a string; the charter's address is a 4-tuple. Neither is (x,y,t,sig)."
+    },
+    {
+      "from": "cl.address",
+      "to": "m.qthe",
+      "relation": "is-adjacent-to",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 129
+        },
+        {
+          "path": "qthe-core/kernel/qthe.mjs",
+          "line": 102
+        }
+      ],
+      "note": "qthe's address is (slot, x, y, resonance) - 4 components, but not the charter's four"
+    },
+    {
+      "from": "cl.address",
+      "to": "d.subleq_port",
+      "relation": "is-adjacent-to",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 129
+        },
+        {
+          "path": "quilt-subleq/src/block.rs",
+          "line": 24
+        }
+      ],
+      "note": "Port{url, sig, encoding} is 3 components and one of them is named `sig`"
+    },
+    {
+      "from": "cl.id",
+      "to": "m.game",
+      "relation": "implemented-partially-by",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 128
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/ts/src/index.js",
+          "line": 69
+        }
+      ]
+    },
+    {
+      "from": "cl.poly",
+      "to": "med.subleq",
+      "relation": "media-listed-in",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 143
+        },
+        {
+          "path": "quilt-subleq/src/lib.rs",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "from": "cl.poly",
+      "to": "med.rust",
+      "relation": "media-listed-in",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 143
+        },
+        {
+          "path": "quilt-rust/crates/quilt-polyformalism/src/lib.rs",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "from": "cl.nodb",
+      "to": "m.agent",
+      "relation": "violated-by",
+      "edge_class": "claim-model",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 133
+        },
+        {
+          "path": "quilt-claw/src/store.ts",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "from": "cl.laws",
+      "to": "med.c99",
+      "relation": "proved-partially-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 26
+        },
+        {
+          "path": "cargo-line-tycoon/substrate/c/cell_algebra.c",
+          "line": 26
+        }
+      ],
+      "note": "2 of 5, in the wrong repo"
+    },
+    {
+      "from": "cl.laws",
+      "to": "med.rust",
+      "relation": "proved-partially-by",
+      "edge_class": "claim-media",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 26
+        },
+        {
+          "path": "quilt-rust/crates/quilt-polyformalism/src/lib.rs",
+          "line": 212
+        }
+      ]
+    },
+    {
+      "from": "cl.witness",
+      "to": "w.canon",
+      "relation": "contradicted-by",
+      "edge_class": "claim-witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 60
+        },
+        {
+          "path": "_worker.js",
+          "line": 192
+        }
+      ]
+    },
+    {
+      "from": "cl.witness",
+      "to": "c.ledgerjs",
+      "relation": "honoured-by",
+      "edge_class": "claim-witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 60
+        },
+        {
+          "path": "quilt-claw/witness/ledger.js",
+          "line": 150
+        }
+      ]
+    },
+    {
+      "from": "cl.result",
+      "to": "w.recorder",
+      "relation": "honoured-by",
+      "edge_class": "claim-witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 88
+        },
+        {
+          "path": "labs/situation-recorder/recorder.py",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "from": "cl.result",
+      "to": "w.canon",
+      "relation": "honoured-partially-by",
+      "edge_class": "claim-witness",
+      "evidence": [
+        {
+          "path": "algebra.md",
+          "line": 88
+        },
+        {
+          "path": "_worker.js",
+          "line": 447
+        },
+        {
+          "path": "_worker.js",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "from": "o.superinstance",
+      "to": "o.patchwork",
+      "relation": "graduates-to",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/patchwork-quilt",
+          "note": "ORG created 2026-10-03"
+        },
+        {
+          "path": "org repo: git.pp-grid",
+          "note": "TS, pushed 2026-10-15"
+        }
+      ],
+      "note": "the only rung where work actually landed"
+    },
+    {
+      "from": "o.patchwork",
+      "to": "o.purple",
+      "relation": "graduates-to",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/purplepincher",
+          "note": "ORG created 2026-07-02"
+        },
+        {
+          "path": "api.github.com/orgs/si-ready",
+          "note": "ORG created 2026-10-03"
+        }
+      ],
+      "note": "the dates INVERT: purplepincher (2026-07-02) predates patchwork-quilt (2026-10-03)"
+    },
+    {
+      "from": "o.purple",
+      "to": "o.siready",
+      "relation": "graduates-to",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/si-ready",
+          "note": "1 repo, created 2026-10-03"
+        }
+      ],
+      "note": "si-ready holds ONE repo (.github) - the ladder stops here"
+    },
+    {
+      "from": "o.superinstance",
+      "to": "o.purple",
+      "relation": "skips-patchwork",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/purplepincher",
+          "note": "cocapn-com-phase1, cocapn-phase1-state-machine"
+        },
+        {
+          "path": "org repo: constraint-theory-core",
+          "note": "Rust"
+        }
+      ],
+      "note": "cocapn's work went straight from the sketchbook to the hardened org, never touching patchwork-quilt"
+    },
+    {
+      "from": "o.cocapn",
+      "to": "o.purple",
+      "relation": "survives-in",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/cocapn",
+          "note": "404"
+        },
+        {
+          "path": "org repo: cocapn-com-phase1",
+          "note": "live in purplepincher"
+        }
+      ],
+      "note": "the NAME is gone; the repos are not"
+    },
+    {
+      "from": "o.superinstance",
+      "to": "o.quiltdata",
+      "relation": "is-occupied-by",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "npm: @quilt/quilt",
+          "note": "kevinklin, quiltdata, v0.4.2"
+        },
+        {
+          "path": "npm: quilt-core",
+          "note": "niko.dellic v0.11.0"
+        }
+      ],
+      "note": "two third parties hold the name `quilt`; neither is SuperInstance"
+    },
+    {
+      "from": "o.superinstance",
+      "to": "o.quiltorg",
+      "relation": "is-occupied-by",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/orgs/quilt",
+          "note": "38 repos, created 2019-04-03"
+        }
+      ],
+      "note": "no relationship, but the name is taken"
+    },
+    {
+      "from": "o.luciddreamer",
+      "to": "o.superinstance",
+      "relation": "blocks-name-for",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "api.github.com/users/luciddreamer",
+          "note": "User, 0 repos"
+        },
+        {
+          "path": "api.github.com/orgs/luciddreamer",
+          "note": "404"
+        }
+      ]
+    },
+    {
+      "from": "o.siready",
+      "to": "o.superinstance",
+      "relation": "is-empty-shelf-of",
+      "edge_class": "org-boundary",
+      "evidence": [
+        {
+          "path": "org repo: .github",
+          "note": "the curated shelf for ready-to-use applications"
+        }
+      ]
+    },
+    {
+      "from": "pkg.nine",
+      "to": "s.quilt",
+      "relation": "is-occupied-by",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "npm: @quilt/quilt",
+          "note": "HTTP 200 v0.4.2 quiltdata"
+        },
+        {
+          "path": "quilt/packages/ai/package.json",
+          "line": 2,
+          "note": "declares @quilt/ai"
+        }
+      ],
+      "note": "all nine declare a scope whose ROOT is held by a third party; the scope itself is unclaimable"
+    },
+    {
+      "from": "pkg.nine",
+      "to": "s.superinstance",
+      "relation": "wants",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "quilt/packages/",
+          "note": "0 packages declare @superinstance/*"
+        },
+        {
+          "path": "npm: @superinstance/quilt-tools",
+          "note": "HTTP 200 v0.1.1 - the scope works"
+        }
+      ],
+      "note": "the free scope is ours and nine packages do not use it"
+    },
+    {
+      "from": "m.spreadsheet",
+      "to": "s.quilt",
+      "relation": "wants",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "quilt/packages/core/package.json",
+          "line": 2,
+          "note": "name @quilt/core 0.3.0"
+        },
+        {
+          "path": "npm: @quilt/core",
+          "note": "HTTP 404"
+        }
+      ],
+      "note": "@quilt/core is unpublished, so the 404 is emptiness, not occupation - but the SCOPE is quiltdata's"
+    },
+    {
+      "from": "s.cocapn",
+      "to": "o.cocapn",
+      "relation": "is-free-because",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "npm: @cocapn/plato-client",
+          "note": "HTTP 404"
+        },
+        {
+          "path": "api.github.com/users/cocapn",
+          "note": "404"
+        }
+      ]
+    },
+    {
+      "from": "s.luciddreamer",
+      "to": "o.luciddreamer",
+      "relation": "is-free-despite",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "npm: @luciddreamer/agent-grid",
+          "note": "HTTP 404"
+        },
+        {
+          "path": "api.github.com/orgs/luciddreamer",
+          "note": "404"
+        }
+      ],
+      "note": "npm does not care that a GitHub User holds the name"
+    },
+    {
+      "from": "s.superinstance",
+      "to": "o.superinstance",
+      "relation": "is-owned-by",
+      "edge_class": "npm-boundary",
+      "evidence": [
+        {
+          "path": "npm: @superinstance/quilt-tools",
+          "note": "maintainer: superinstance"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+// intercontext.dot
+// The intercontext map — 48 nodes / 70 edges. Every node and edge carries a file+line
+// or a commit sha. Machine-readable twin: intercontext.json (generated from the
+// same object, so the two cannot disagree).
+//
+// Measured 2026-10-18 by Kira (Cartographer). Repos read at these heads:
+//   SuperInstance/quilt                33b5d810d4a0  2026-10-15
+//   SuperInstance/quilt-claw           165a49ab68b7  2026-10-17
+//   SuperInstance/cargo-line-tycoon    595f6f320182  2026-10-03
+//   SuperInstance/qthe                 adc378dc8b89  2026-10-18
+//   SuperInstance/quilt-subleq         21efdd3dbce8  2026-09-24
+//   SuperInstance/quilt-rust           ef3c3799047c  2026-09-29
+//   SuperInstance/quilt-claw-cells-game 5ef7416cd214  2026-09-19
+//   SuperInstance/AI-Writings          1da6180bb77a  2026-10-17
+//   SuperInstance/quilt-cells          (2 files, no  2026-10-10
+//
+// GAPS ARE DRAWN AS GAPS. A claim with no edge to an implementation is drawn
+// dashed, double-periphery and isolated. Do not connect it.
+//
+// EDGE CLASSES
+//   thin grey   = inside one boundary (model<->model, claim<->claim)
+//   thick org  = ORGANIZATION boundary crossing  (sketchbook -> org)
+//   thick npm  = NPM SCOPE boundary crossing       (npm -> npm)
+//   purple bld = ladder <-> witness (a rung is checkable only if witnessed)
+//   teal       = chain family (hash algorithm)
+//   crimson    = witness dialect drift
+//
+digraph intercontext {
+  rankdir=LR; compound=true; fontname="Helvetica"; labelloc="t"; fontsize=20;
+  label="INTERCONTEXT — the cellular-first substrate as a graph\n48 nodes / 70 edges / 15 boundary crossings\nID and ADDRESS are INDEPENDENT axes — no model has both\nMeasured 2026-10-18 · every node and edge cites a file:line or a commit sha";
+  nodesep=0.42; ranksep=1.5; splines=true;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, margin="0.14,0.07"];
+  edge [fontname="Helvetica", fontsize=7];
+
+  subgraph cluster_models {
+    label="  MODELS  "; color="#1d4ed8"; style="rounded"; penwidth=2; fontcolor="#1d4ed8"; fontsize=11;
+    m_spreadsheet [label="the spreadsheet cell\n@quilt/core 0.3.0\nstring id e.g. \"compass.heading\"\n8 kinds, yaml+zod", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_agent [label="the agent cell\nquilt-claw\nNO address, NO hash-id\noutputs carry witness_hash", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_openjev [label="the openjev ancestor cell\nRANDOM identity: cell-\{uuid4[:8]\}\nA1 address via parse_address", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_game [label="the game's substrate\nFNV-1a-64 content hash\nin a method MISNAMED computeAddress()", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_qthe [label="qthe's lattice cell\n64-slot wormhole table\nADDRESS = (slot, x, y, resonance), NO hash", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_receipt [label="the receipt cell\nINPUT -\> OUTPUT + WHY + COST\ninput_hash/product_hash/activation/budget", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_quilt_cells [label="the cell-contract sketch\nINPUT -\> [CELL] -\> OUTPUT + WHY + COST\nDOCS ONLY, no code", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+    m_corpus [label="the demo corpus that changes under itself\n109+ demos under cellular-first-design/", fillcolor="#dbeafe", color="#1d4ed8", penwidth=2];
+  }
+
+  subgraph cluster_witness {
+    label="  WITNESS  "; color="#be123c"; style="rounded"; penwidth=2; fontcolor="#be123c"; fontsize=11;
+    w_charter [label="the charter's witness\n\{tick, op, cell, params, hash, prev_hash, sig\}\nCHAINED. result? ADDED 2026-10-18", fillcolor="#ffe4e6", color="#be123c", penwidth=2];
+    w_canon [label="the live canon's witness\n\{id, opcode, cell_id, timestamp, payload_summary\}\nNO CHAIN. result on TICK only", fillcolor="#ffe4e6", color="#be123c", penwidth=2];
+    w_recorder [label="the labs' witness\nDRAFT\{prompt, response, params\}\nCHAINED. CARRIES THE RESULT", fillcolor="#ffe4e6", color="#be123c", penwidth=2];
+    w_openjev [label="openjev's witness (a FOURTH dialect, found by this map)\n\{ts, opcode:'WITNESS', value, source, jev_confidence\}\nNO hash, NO chain", fillcolor="#ffe4e6", color="#be123c", penwidth=2];
+    w_reltypes [label="the recorder's NINE relations - a FOURTH opcode vocabulary\nTASK ROUTE DRAFT DRAW FOLD KEEP DROP MARK OUTCOME", fillcolor="#ffe4e6", color="#be123c", penwidth=2];
+  }
+
+  subgraph cluster_chains {
+    label="  CHAINS  "; color="#0f766e"; style="rounded"; penwidth=2; fontcolor="#0f766e"; fontsize=11;
+    c_fnv_recorder [label="fnv1a-64 chain (python)\nGENESIS via prev=None; verify() replays", fillcolor="#ccfbf1", color="#0f766e", penwidth=2];
+    c_ledgerjs [label="fnv1a-64 chain (js)\nGENESIS '0x0000000000000000'\nbyte-compatible with recorder.py BY DESIGN", fillcolor="#ccfbf1", color="#0f766e", penwidth=2];
+    c_ledger_rs [label="double-entry chain (rust)\nsha256, input/output postings, prev_hash\nAND `expected` - the prediction it was scored against", fillcolor="#ccfbf1", color="#0f766e", penwidth=2];
+  }
+
+  subgraph cluster_media {
+    label="  MEDIA  "; color="#4338ca"; style="rounded"; penwidth=2; fontcolor="#4338ca"; fontsize=11;
+    med_ts [label="TypeScript\nquilt-claw + @quilt/core\n6 of 11 opcodes dispatched", fillcolor="#e0e7ff", color="#4338ca", penwidth=2];
+    med_c99 [label="C99\nsubstrate/c/cell_algebra.c\n5 opcodes + 2 of the 5 laws machine-checked", fillcolor="#e0e7ff", color="#4338ca", penwidth=2];
+    med_py [label="Python\nopenjev/cell.py: BIND(:91) FORGET(:111) TICK(:121)\nsubstrate_cell_algebra.py: 0 dispatched", fillcolor="#e0e7ff", color="#4338ca", penwidth=2];
+    med_rust [label="Rust\nquilt-polyformalism: Op enum, COUNT=9, WITH an Engine\nno_std-capable", fillcolor="#e0e7ff", color="#4338ca", penwidth=2];
+    med_subleq [label="SUBLEQ - 1 instruction\nquilt-subleq\nBIND/LINK/EFFECT=1 instr, VIEW=2, 5 STUBBED\nHAS A REMOTE PORT", fillcolor="#e0e7ff", color="#4338ca", penwidth=2];
+  }
+
+  subgraph cluster_devices {
+    label="  DEVICES  "; color="#0891b2"; style="rounded"; penwidth=2; fontcolor="#0891b2"; fontsize=11;
+    d_subleq_port [label="the cell that calls OUT\nBlockRef::Port\{url, sig, encoding\}\nTHE FETCH IS MOCKED", fillcolor="#cffafe", color="#0891b2", penwidth=2];
+    d_quilt_cells_call [label="the call-out, in PROSE\n'if a cell cannot fit on the vessel it gets a PHONE CALL'\nNO CODE", fillcolor="#cffafe", color="#0891b2", penwidth=2];
+    d_rust_nostd [label="no_std Rust cell\nquilt-polyformalism: #![cfg_attr(not(test), no_std)]\n9 opcodes, an Engine, law checks", fillcolor="#cffafe", color="#0891b2", penwidth=2];
+  }
+
+  subgraph cluster_packages {
+    label="  PACKAGES  "; color="#991b1b"; style="rounded"; penwidth=2; fontcolor="#991b1b"; fontsize=11;
+    pkg_nine [label="NINE @quilt/* packages\nwant a scope they cannot have\nall HTTP 404 on npm", fillcolor="#fee2e2", color="#991b1b", penwidth=3];
+  }
+
+  // ---- claims and destinations with no cluster ----
+  cl_opcodes [label="11 opcodes", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_kinds [label="26 kinds", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_address [label="Address = (x, y, t, sig)", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_lattice [label="4D lattice, three projections\nTOP x,y / FRONT signal / SIDE time", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_id [label="Cell ID = hash of (kind, payload, parents)", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_poly [label="Polyformalism = same model, 12 languages", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_nodb [label="Don't store cells in a DB.\nUse the witness log + derived state", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_laws [label="5 laws, proved in quilt-substrate-meta", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_witness [label="Witness log IS the substrate of truth", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_ladder [label="the measurement ladder\nstep -\> preds -\> labels", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  cl_result [label="a witness must carry the answer", fillcolor="#fef3c7", color="#92400e", penwidth=2];
+  o_superinstance [label="SuperInstance\nSKETCHBOOK", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_patchwork [label="patchwork-quilt\nPRODUCTION", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_purple [label="purplepincher\nHARDENED", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_siready [label="si-ready\nEMPTY SHELF", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_luciddreamer [label="luciddreamer\nNAME HELD BY A USER", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_cocapn [label="cocapn\nGONE", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_quiltdata [label="quiltdata\nOCCUPIES @quilt", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  o_quiltorg [label="quilt\nUNRELATED", fillcolor="#f4f4f5", color="#3f3f46", penwidth=2];
+  s_superinstance [label="@superinstance/*", fillcolor="#ffedd5", color="#9a3412", penwidth=2];
+  s_quilt [label="@quilt/*", fillcolor="#ffedd5", color="#9a3412", penwidth=2];
+  s_luciddreamer [label="@luciddreamer/*", fillcolor="#ffedd5", color="#9a3412", penwidth=2];
+  s_cocapn [label="@cocapn/*", fillcolor="#ffedd5", color="#9a3412", penwidth=2];
+
+  // ---- UNIMPLEMENTED CLAIMS: drawn dashed, double-periphery, NO EDGE ----
+  cl_lattice [label="4D lattice, three projections\nTOP x,y / FRONT signal / SIDE time\n\n>>> NO IMPLEMENTATION ANYWHERE <<<\n0 edges in this graph", style="rounded,filled,dashed", peripheries=2, fillcolor="#f5f5f4", color="#a8a29e", penwidth=3, fontcolor="#57534e"];
+
+  // ============================================================
+  // EDGES — WITHIN a boundary: thin, quiet, already read.
+  // ---- UNIMPLEMENTED CLAIMS: drawn dashed, double-periphery, NO EDGE ----
+  cl_lattice [label="4D lattice, three projections\nTOP x,y / FRONT signal / SIDE time\n\n>>> NO IMPLEMENTATION ANYWHERE <<<\n0 edges in this graph", style="rounded,filled,dashed", peripheries=2, fillcolor="#f5f5f4", color="#a8a29e", penwidth=3, fontcolor="#57534e"];
+
+  // ============================================================
+  // --- cross-model : 4 edges [within a boundary] ---
+  m_spreadsheet -> m_agent [label="shares-no-identity\\nquilt/packages/core/src/types.ts:43", color="#b45309", style=bold, penwidth=2];
+  m_game -> m_spreadsheet [label="misnames-address-as-id\\ncargo-line-tycoon/substrate/ts/src/index.js:68", color="#b45309", style=bold, penwidth=2];
+  m_openjev -> m_spreadsheet [label="inherits-address-style\\ncellular-first-design/code/spreadsheet/spreadsheet_plugin.py:23", color="#b45309", style=bold, penwidth=2];
+  m_qthe -> m_game [label="inherits-x-y-tuple\\nqthe/qthe-core/kernel/qthe.mjs:102", color="#b45309", style=bold, penwidth=2];
+
+  // --- model-claim : 3 edges [within a boundary] ---
+  m_receipt -> cl_id [label="implements-partially\\nlabs/quilt-kernel/quilt_kernel.py:259", color="#78716c", style=solid, penwidth=1];
+  m_corpus -> m_openjev [label="contains\\ncellular-first-design/code/openjev/cell.py:34", color="#78716c", style=solid, penwidth=1];
+  m_corpus -> m_spreadsheet [label="contains\\ncellular-first-design/code/spreadsheet/spreadsheet_plugin.py:23", color="#78716c", style=solid, penwidth=1];
+
+  // --- witness : 6 edges [within a boundary] ---
+  w_charter -> w_recorder [label="is-unchained-relative-to\\nalgebra.md:72", color="#be123c", style=solid, penwidth=2];
+  w_charter -> w_canon [label="is-unchained\\nalgebra.md:76", color="#be123c", style=solid, penwidth=2];
+  w_canon -> w_charter [label="drifted-from\\n_worker.js:181", color="#be123c", style=solid, penwidth=2];
+  w_recorder -> w_charter [label="is-superset-of\\nlabs/situation-recorder/recorder.py:104", color="#be123c", style=solid, penwidth=2];
+  w_openjev -> w_charter [label="is-unchained\\ncellular-first-design/code/openjev/cell.py:46", color="#be123c", style=solid, penwidth=2];
+  w_reltypes -> w_charter [label="inherits-nothing-from\\nlabs/situation-recorder/recorder.py:38", color="#be123c", style=solid, penwidth=2];
+
+  // --- chain : 5 edges [within a boundary] ---
+  c_fnv_recorder -> c_ledgerjs [label="is-byte-compatible-with\\nquilt-claw/witness/ledger.js:6", color="#0f766e", style=solid, penwidth=2];
+  c_ledger_rs -> c_fnv_recorder [label="diverges-from\\nquilt-rust/packages/core/src/ledger.rs:431", color="#0f766e", style=solid, penwidth=2];
+  w_recorder -> c_fnv_recorder [label="is-chained-by\\nlabs/situation-recorder/recorder.py:90", color="#0f766e", style=solid, penwidth=2];
+  w_charter -> c_fnv_recorder [label="is-chained-by\\nalgebra.md:76", color="#0f766e", style=solid, penwidth=2];
+  c_ledgerjs -> w_reltypes [label="hosts\\nquilt-claw/witness/ledger.js:448", color="#0f766e", style=solid, penwidth=2];
+
+  // --- media-model : 8 edges [within a boundary] ---
+  med_subleq -> m_game [label="hosts\\nsrc/lib.rs:26", color="#1d4ed8", style=solid, penwidth=1];
+  med_rust -> m_agent [label="hosts\\ncrates/quilt-polyformalism/src/lib.rs:72", color="#1d4ed8", style=solid, penwidth=1];
+  med_c99 -> m_game [label="hosts\\nsubstrate/c/cell_algebra.c:5", color="#1d4ed8", style=solid, penwidth=1];
+  med_ts -> m_spreadsheet [label="hosts\\nquilt/packages/core/src/types.ts:43", color="#1d4ed8", style=solid, penwidth=1];
+  med_py -> m_openjev [label="hosts\\ncellular-first-design/code/openjev/cell.py:91", color="#1d4ed8", style=solid, penwidth=1];
+  med_ts -> m_game [label="hosts\\ncargo-line-tycoon/substrate/ts/src/index.js:80", color="#1d4ed8", style=solid, penwidth=1];
+  med_subleq -> m_spreadsheet [label="cannot-host\\nsrc/lib.rs:27", color="#1d4ed8", style=solid, penwidth=1];
+  med_rust -> m_spreadsheet [label="cannot-host\\ncrates/quilt-polyformalism/src/lib.rs:37", color="#1d4ed8", style=solid, penwidth=1];
+
+  // --- media-device : 1 edges [within a boundary] ---
+  med_subleq -> d_subleq_port [label="has\\nsrc/block.rs:24", color="#1d4ed8", style=solid, penwidth=2];
+
+  // --- device-feature : 2 edges [within a boundary] ---
+  d_subleq_port -> m_quilt_cells [label="implements-in-code\\nquilt-subleq/src/block.rs:24", color="#0891b2", style=solid, penwidth=2];
+  m_quilt_cells -> d_quilt_cells_call [label="specifies\\nQUILT.md:145", color="#0891b2", style=solid, penwidth=2];
+
+  // --- device-device : 1 edges [within a boundary] ---
+  d_rust_nostd -> d_subleq_port [label="cannot-reach\\ncrates/quilt-polyformalism/src/lib.rs:683", color="#0891b2", style=dashed, penwidth=2];
+
+  // --- claim-media : 9 edges [within a boundary] ---
+  cl_opcodes -> med_ts [label="implemented-by\\nalgebra.md:13", color="#4338ca", style=solid, penwidth=1];
+  cl_opcodes -> med_c99 [label="implemented-by\\nalgebra.md:13", color="#4338ca", style=solid, penwidth=1];
+  cl_opcodes -> med_rust [label="implemented-by\\nalgebra.md:13", color="#4338ca", style=solid, penwidth=1];
+  cl_opcodes -> med_py [label="implemented-by\\nalgebra.md:13", color="#4338ca", style=solid, penwidth=1];
+  cl_opcodes -> med_subleq [label="implemented-by\\nalgebra.md:13", color="#4338ca", style=solid, penwidth=1];
+  cl_poly -> med_subleq [label="media-listed-in\\nalgebra.md:143", color="#4338ca", style=solid, penwidth=1];
+  cl_poly -> med_rust [label="media-listed-in\\nalgebra.md:143", color="#4338ca", style=solid, penwidth=1];
+  cl_laws -> med_c99 [label="proved-partially-by\\nalgebra.md:26", color="#4338ca", style=solid, penwidth=1];
+  cl_laws -> med_rust [label="proved-partially-by\\nalgebra.md:26", color="#4338ca", style=solid, penwidth=1];
+
+  // --- claim-model : 7 edges [within a boundary] ---
+  cl_kinds -> m_agent [label="implemented-by\\nalgebra.md:45", color="#4338ca", style=solid, penwidth=1];
+  cl_kinds -> w_canon [label="validated-by\\nalgebra.md:45", color="#4338ca", style=solid, penwidth=1];
+  cl_address -> m_spreadsheet [label="ADJACENT ONLY — NOT IMPLEMENTED\\nis-adjacent-to\\nalgebra.md:129", color="#a8a29e", style=dashed, penwidth=2];
+  cl_address -> m_qthe [label="ADJACENT ONLY — NOT IMPLEMENTED\\nis-adjacent-to\\nalgebra.md:129", color="#a8a29e", style=dashed, penwidth=2];
+  cl_address -> d_subleq_port [label="ADJACENT ONLY — NOT IMPLEMENTED\\nis-adjacent-to\\nalgebra.md:129", color="#a8a29e", style=dashed, penwidth=2];
+  cl_id -> m_game [label="implemented-partially-by\\nalgebra.md:128", color="#4338ca", style=solid, penwidth=1];
+  cl_nodb -> m_agent [label="violated-by\\nalgebra.md:133", color="#4338ca", style=solid, penwidth=1];
+
+  // --- claim-witness : 4 edges [within a boundary] ---
+  cl_witness -> w_canon [label="contradicted-by\\nalgebra.md:60", color="#4338ca", style=solid, penwidth=2];
+  cl_witness -> c_ledgerjs [label="honoured-by\\nalgebra.md:60", color="#4338ca", style=solid, penwidth=2];
+  cl_result -> w_recorder [label="honoured-by\\nalgebra.md:88", color="#4338ca", style=solid, penwidth=2];
+  cl_result -> w_canon [label="honoured-partially-by\\nalgebra.md:88", color="#4338ca", style=solid, penwidth=2];
+
+  // --- ladder-witness : 5 edges [within a boundary] ---
+  cl_ladder -> w_recorder [label="is-checkable-only-if-witnessed-by\\nsituations/arch/PRICED-STRAINING.md:28", color="#7e22ce", style=bold, penwidth=3];
+  cl_ladder -> w_charter [label="was-not-checkable-until-2026-10-18\\nalgebra.md:88", color="#7e22ce", style=bold, penwidth=3];
+  cl_ladder -> w_canon [label="is-partially-checkable-by\\n_worker.js:447", color="#7e22ce", style=bold, penwidth=3];
+  cl_ladder -> c_ledger_rs [label="is-checkable-only-if-witnessed-by\\nquilt-rust/packages/core/src/ledger.rs:421", color="#7e22ce", style=bold, penwidth=3];
+  cl_ladder -> w_openjev [label="is-not-checkable-by\\ncellular-first-design/code/openjev/cell.py:51", color="#7e22ce", style=bold, penwidth=3];
+
+  // --- org-boundary : 9 edges [BOUNDARY CROSSING] ---
+  o_superinstance -> o_patchwork [label="graduates-to\\napi.github.com/orgs/patchwork-quilt:-", color="#b00020", style=bold, penwidth=4];
+  o_patchwork -> o_purple [label="graduates-to\\napi.github.com/orgs/purplepincher:-", color="#b00020", style=bold, penwidth=4];
+  o_purple -> o_siready [label="graduates-to\\napi.github.com/orgs/si-ready:-", color="#b00020", style=bold, penwidth=4];
+  o_superinstance -> o_purple [label="skips-patchwork\\napi.github.com/orgs/purplepincher:-", color="#b00020", style=bold, penwidth=4];
+  o_cocapn -> o_purple [label="survives-in\\napi.github.com/orgs/cocapn:-", color="#b00020", style=bold, penwidth=4];
+  o_superinstance -> o_quiltdata [label="is-occupied-by\\nnpm: @quilt/quilt:-", color="#b00020", style=bold, penwidth=4];
+  o_superinstance -> o_quiltorg [label="is-occupied-by\\napi.github.com/orgs/quilt:-", color="#b00020", style=bold, penwidth=4];
+  o_luciddreamer -> o_superinstance [label="blocks-name-for\\napi.github.com/users/luciddreamer:-", color="#b00020", style=bold, penwidth=4];
+  o_siready -> o_superinstance [label="is-empty-shelf-of\\norg repo: .github:-", color="#b00020", style=bold, penwidth=4];
+
+  // --- npm-boundary : 6 edges [BOUNDARY CROSSING] ---
+  pkg_nine -> s_quilt [label="is-occupied-by\\nnpm: @quilt/quilt:-", color="#e07b00", style=bold, penwidth=4];
+  pkg_nine -> s_superinstance [label="wants\\nquilt/packages/:-", color="#e07b00", style=bold, penwidth=4];
+  m_spreadsheet -> s_quilt [label="wants\\nquilt/packages/core/package.json:2", color="#e07b00", style=bold, penwidth=4];
+  s_cocapn -> o_cocapn [label="is-free-because\\nnpm: @cocapn/plato-client:-", color="#e07b00", style=bold, penwidth=4];
+  s_luciddreamer -> o_luciddreamer [label="is-free-despite\\nnpm: @luciddreamer/agent-grid:-", color="#e07b00", style=bold, penwidth=4];
+  s_superinstance -> o_superinstance [label="is-owned-by\\nnpm: @superinstance/quilt-tools:-", color="#e07b00", style=bold, penwidth=4];
+
+
+}
+
+// =====================================================================
+// DELIBERATELY NOT DRAWN — facts that are true but are not edges, listed
+// here so this file and intercontext.json cannot silently disagree.
+//
+// * The five MODELS share a name and nothing else. There is no importing, no
+//   common type, no serialization that crosses between them. An edge would
+//   imply a relationship that does not exist, so none is drawn.
+// * cl.lattice ("4D lattice, three projections") has ZERO edges, not because
+//   it is unmeasured but because grep for FRONT/SIDE/TOP projection triples
+//   across 8 repos returns nothing. Its absence is the finding.
+// * cl.address has three edges and all three are ADJACENT ONLY. Nothing in the
+//   corpus computes (x, y, t, sig). The edges are drawn dashed to say so.
+// * No edge joins any model to any organization. No cell model has ever
+//   graduated to patchwork-quilt or purplepincher; the two orgs contain
+//   landing pages and git.pp, not cells. The ladder of organizations and the
+//   graph of cells do not currently touch.
+// * @luciddreamer/* and @cocapn/* have NO edge to any package. Three repos
+//   declare those names and none of them is in this corpus, so the wanting
+//   is asserted in prior measurements (/tmp/NPM-AUDIT.md) and NOT re-measured
+//   here. They are left undrawn rather than asserted.
+//
+// MEASURED, NOT CLAIMED — corrections to the brief this map was built from:
+//   1. "Rust: 0 opcodes" is wrong. quilt-rust implements 9 of 11 (COUNT=9),
+//      with an Engine and law checks. WORLD and TIME are the missing two.
+//   2. "CONTEST MERGER REVOKE DELEGATE WITHDRAW never implemented anywhere"
+//      is wrong. cargo-line-tycoon/substrate-bundle/substrate-sdk.js
+//      implements ATTEST:229, CONTEST:242, WITHDRAW:251.
+//   3. "algebra.md ONE commit, ever" — it now has 2. 1da6180 (2026-10-18)
+//      added result?: any to the Witness type, 2 hours before this map.
+//   4. "PRICED-TRAINING.md" has ZERO commits in AI-Writings. The ladder is
+//      cited from PRICED-STANDARD.md:100, which points at a file that has
+//      never existed. The code is at labs/priced-training/.
+//   5. "the charter witness has no result" was true until 1da6180.
+//   6. parse_address is NOT in openjev/cell.py. It is in
+//      cellular-first-design/code/spreadsheet/spreadsheet_plugin.py:23.
+// =====================================================================
